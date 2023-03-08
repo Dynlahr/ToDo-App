@@ -54,6 +54,7 @@ function TodoProvider(props){
     return(
         <TodoContext.Provider value={{
             loading,
+            todos,
             error,
             totalTodos,
             completedTodos,
