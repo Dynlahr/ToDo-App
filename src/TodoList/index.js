@@ -1,11 +1,27 @@
 import react from "react";
 import './TodoList.css'
 
-function TodoList(props){
+function TodoList({
+    children,
+    todos,
+    error,
+    onError,
+    loading,
+    onLoading,
+    searchedTodos,
+    onSearchedTodos,
+    render,
+}){
     return(
         <section>
             <ul>
-                {props.children}
+                {error && onError()}
+                {loading && onLoading()}
+                {(!loading && !searchedTodos.length  && !todos.length) && onSearchedTodos()}
+
+                {searchedTodos.map(render)}
+
+                {children}
             </ul>
         </section>
     );

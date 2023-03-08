@@ -40,16 +40,24 @@ function App() {
         setSearchValue={setSearchValue}
         />
       </TodoHeader>
-      <TodoList>
-        {error && <p>Desespérate, hubo un error...</p>}
-        {loading && <div className='loading'>
-                      <span className='dot-1'></span>
-                      <span className='dot-2'></span>
-                      <span className='dot-3'></span>
-                    </div>}
-        {(!loading && !searchedTodos.length  && !todos.length) && <p className="NewTodo-Text" onClick={setOpenModal}>¡Crea tu primer TODO!</p>}
+
+      <TodoList
+        todos={todos}
+        error={error}
+        onError={() => <p>Desespérate, hubo un error...</p>}
+
+        loading={loading}
+        onLoading={() => <div className='loading'>
+                            <span className='dot-1'></span>
+                            <span className='dot-2'></span>
+                            <span className='dot-3'></span>
+                          </div>
+        }
+
+        searchedTodos={searchedTodos}
+        onSearchedTodos={() => <p className="NewTodo-Text" onClick={setOpenModal}>¡Crea tu primer TODO!</p>}
         
-        {searchedTodos.map(todo => (
+        render={todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}
@@ -57,9 +65,9 @@ function App() {
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
-        ))}
-      </TodoList>
-
+        )}
+      />
+      
       {!!openModal && (
         <Modal>
           <TodoForm 
