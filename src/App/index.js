@@ -43,6 +43,9 @@ function App() {
 
       <TodoList
         todos={todos}
+        searchValue={searchValue}
+        onEmptySearchValue={(searchText) => <p className="onEmptySearchValue" >No se encontraron resultados que contengan "{searchText}" </p>}
+
         error={error}
         onError={() => <p>Desespérate, hubo un error...</p>}
 
@@ -57,17 +60,27 @@ function App() {
         searchedTodos={searchedTodos}
         onSearchedTodos={() => <p className="NewTodo-Text" onClick={setOpenModal}>¡Crea tu primer TODO!</p>}
         
-        render={todo => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-          />
-        )}
-      />
-      
+        // render={todo => (
+        //   <TodoItem
+        //     key={todo.text}
+        //     text={todo.text}
+        //     completed={todo.completed}
+        //     onComplete={() => completeTodo(todo.text)}
+        //     onDelete={() => deleteTodo(todo.text)}
+        //   />
+        // )}
+      >
+      {todo => (
+        <TodoItem
+          key={todo.text}
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => completeTodo(todo.text)}
+          onDelete={() => deleteTodo(todo.text)}
+        />
+      )}
+      </TodoList>
+
       {!!openModal && (
         <Modal>
           <TodoForm 

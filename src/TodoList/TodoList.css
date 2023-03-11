@@ -70,3 +70,19 @@ ul {
   border: 0.2rem solid black;
   cursor: pointer;
 }
+
+.onEmptySearchValue {
+  color: black;
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.42);
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  transition: 0.3s ease;
+  padding: 1rem;
+}

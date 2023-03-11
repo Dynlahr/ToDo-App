@@ -11,17 +11,22 @@ function TodoList({
     searchedTodos,
     onSearchedTodos,
     render,
+    searchValue,
+    onEmptySearchValue,
 }){
     return(
         <section>
             <ul>
                 {error && onError()}
                 {loading && onLoading()}
-                {(!loading && !searchedTodos.length  && !todos.length) && onSearchedTodos()}
+                {(!loading && !todos.length) && onSearchedTodos()}
 
-                {searchedTodos.map(render)}
+                {(!!todos.length && !searchedTodos.length) && onEmptySearchValue(searchValue)}
 
-                {children}
+
+                {searchedTodos.map(children || render())}
+
+                
             </ul>
         </section>
     );
