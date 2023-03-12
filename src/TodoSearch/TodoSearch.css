@@ -24,3 +24,7 @@
     outline-color: white;
     scale: 1.05;
 }
+
+.TodoSearch:disabled {
+    opacity: 25%;
+}

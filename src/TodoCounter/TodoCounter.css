@@ -7,4 +7,9 @@
     background-clip: text;
     color: transparent; */
     color: white;
+    transition: 0.3s;
+}
+
+.TodoCounter--loading {
+    opacity: 25%;
 }
