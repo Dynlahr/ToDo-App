@@ -27,7 +27,8 @@ function App() {
 
   } = useTodos();
   
-
+  console.log(deleteTodo);
+  console.log(completeTodo);
   return (
     <React.Fragment>
       <TodoHeader loading={loading}>
